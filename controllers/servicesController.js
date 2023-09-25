@@ -11,10 +11,10 @@ export const getServices = (req, res) => {
 };
 
 export const addService = (req, res) => {
-  const { title, price } = req.body;
-  const q = 'INSERT INTO services (title, price) VALUES (?,?)';
+  const { title, price, category } = req.body;
+  const q = 'INSERT INTO services (title, price, category) VALUES (?,?,?)';
 
-  pool.query(q, [title, price], (err, result) => {
+  pool.query(q, [title, price, category], (err, result) => {
     if (err) {
       res.status(500).json({ err });
       return;
